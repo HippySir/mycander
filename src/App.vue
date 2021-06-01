@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <cander :options="options" v-model="value"></cander>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Cander from './components/Cander.vue'
+import { formData, listData } from './mytest'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Cander
+  },
+  created() {
+  },
+  data() {
+    return {
+      options: formData,
+      listData: listData,
+      value: []
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
