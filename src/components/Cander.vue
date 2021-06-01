@@ -54,12 +54,10 @@ export default {
             this.$emit("input", value);
         },
         toggle () {
-          this.$emit("input", []);
           this.isShow = !this.isShow;
         },
         close () {
            this.isShow = false;
-           this.$emit("input", []);
         }
     }
 }

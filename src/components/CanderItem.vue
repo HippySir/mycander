@@ -22,6 +22,7 @@
         :level="level + 1"
         :options="ruleList"
         :value="value"
+        @change="change"
       >
       </cander-itme>
     </div>
@@ -33,18 +34,13 @@ export default {
    name: 'canderItme',
    data () {
        return {
-           currentItme: null,
+       
        }
    },
    computed: {
        ruleList () {
            return this.value[this.level] && this.value[this.level].children
        }
-   },
-   watch: {
-     ruleList (value) {
-       console.log(value);
-     }
    },
    props: {
      level: {
@@ -60,6 +56,9 @@ export default {
      }
    },
    methods: {
+     change (value) {
+       this.$emit('change', value);
+     },
      selectItem (value) {
          let cloneData = cloneDeep(this.value);
          cloneData.splice(this.level + 1);
