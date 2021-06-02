@@ -27,6 +27,9 @@ export default {
         CanderItem
     },
     props: {
+        lazy: {
+            type: Function
+        },
         options: {
             type: Array,
             default: () => []

@@ -476,7 +476,7 @@ function getFormData (data, arr, level, parentId) {
   }
 }
 
-getFormData(provience, formData, level, null);
+getFormData(provience, formData, level, 0);
 
 let formDataList = cloneDeep(formData);
 let index = 0;

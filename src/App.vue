@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <cander :options="options" v-model="value"></cander>
+    <cander
+      :options="options"
+      :lazy="lazy"
+      v-model="value"
+    >
+   </cander>
   </div>
 </template>
 
@@ -13,6 +18,10 @@ export default {
     Cander
   },
   created() {
+    console.log(listData);
+    this.getData(0).then(res => {
+      this.options = res;
+    })
   },
   data() {
     return {
@@ -21,9 +30,26 @@ export default {
       value: []
     }
   },
+  methods: {
+    getData (id) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let filterData = listData.filter(item => item.pid === id);
+          if (filterData && filterData.length) {
+            resolve(filterData);
+          } else {
+            reject(new Error(filterData));
+          }
+        }, 1000);
+      })
+    },
+    async lazy (id, callback) {
+      let res = await this.getData(id);
+      callback(res);
+    }
+  }
 }
 </script>
-
 <style>
 
 </style>
